@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+  --radius: 0.5rem;
+  --chart-1: #2563eb;
+  --chart-2: #dc2626;
+  --chart-3: #16a34a;
+  --chart-4: #9333ea;
+  --chart-5: #db2777;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .shadow-luxury {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gradient-luxury {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .gradient-premium {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
