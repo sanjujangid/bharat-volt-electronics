@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Logo from '@/components/layout/logo'
 
 const footerLinks = [
   {
@@ -49,36 +50,33 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[var(--background)] border-t border-[var(--border)]">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">BV</span>
-              </div>
-              <span className="font-display text-xl font-bold">Bharat Volt</span>
+            <div className="mb-6">
+              <Logo size="lg" />
             </div>
-            <p className="text-gray-300 mb-6">
+            <p className="text-[var(--muted-foreground)] mb-6 leading-relaxed">
               Your trusted partner for premium electronics and home appliances. 
-              Quality products, competitive prices, and exceptional service.
+              Bharat Volt Electronics - Quality products, competitive prices, and exceptional service.
             </p>
             
             {/* Social Links */}
             <div className="flex space-x-3">
-              <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Facebook className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="text-[var(--muted-foreground)] hover:text-[var(--primary)] hover:bg-[var(--secondary)] h-10 w-10 rounded-xl">
+                <Facebook className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Twitter className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="text-[var(--muted-foreground)] hover:text-[var(--primary)] hover:bg-[var(--secondary)] h-10 w-10 rounded-xl">
+                <Twitter className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Instagram className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="text-[var(--muted-foreground)] hover:text-[var(--primary)] hover:bg-[var(--secondary)] h-10 w-10 rounded-xl">
+                <Instagram className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-gray-800">
-                <Youtube className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="text-[var(--muted-foreground)] hover:text-[var(--primary)] hover:bg-[var(--secondary)] h-10 w-10 rounded-xl">
+                <Youtube className="h-5 w-5" />
               </Button>
             </div>
           </div>
@@ -86,13 +84,13 @@ export default function Footer() {
           {/* Links Sections */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className="font-semibold text-lg mb-4 text-white">{section.title}</h3>
+              <h3 className="font-semibold text-lg mb-4 text-[var(--foreground)]">{section.title}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -104,60 +102,60 @@ export default function Footer() {
         </div>
 
         {/* Contact Information */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Phone className="h-5 w-5 text-white" />
+        <div className="mt-12 pt-8 border-t border-[var(--border)]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
+                <Phone className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h4 className="font-semibold">Phone Support</h4>
-                <p className="text-gray-300">1800-XXX-XXXX</p>
-                <p className="text-gray-400 text-sm">Mon-Sat: 9AM-8PM</p>
+                <h4 className="font-semibold text-[var(--foreground)]">Phone Support</h4>
+                <p className="text-[var(--muted-foreground)]">1800-XXX-XXXX</p>
+                <p className="text-[var(--muted-foreground)]/80 text-sm">Mon-Sat: 9AM-8PM</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
-                <Mail className="h-5 w-5 text-white" />
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
+                <Mail className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h4 className="font-semibold">Email Support</h4>
-                <p className="text-gray-300">support@bharatvolt.com</p>
-                <p className="text-gray-400 text-sm">24/7 Available</p>
+                <h4 className="font-semibold text-[var(--foreground)]">Email Support</h4>
+                <p className="text-[var(--muted-foreground)]">support@bharatvolt.com</p>
+                <p className="text-[var(--muted-foreground)]/80 text-sm">24/7 Available</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <MapPin className="h-5 w-5 text-white" />
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
+                <MapPin className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h4 className="font-semibold">Corporate Office</h4>
-                <p className="text-gray-300">Delhi, India</p>
-                <p className="text-gray-400 text-sm">Visit our showroom</p>
+                <h4 className="font-semibold text-[var(--foreground)]">Corporate Office</h4>
+                <p className="text-[var(--muted-foreground)]">Jaipur, Rajasthan</p>
+                <p className="text-[var(--muted-foreground)]/80 text-sm">Visit our showroom</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Payment Methods */}
-        <div className="mt-8 pt-8 border-t border-gray-800">
+        <div className="mt-8 pt-8 border-t border-[var(--border)]">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div>
-              <h4 className="font-semibold mb-2">We Accept</h4>
+              <h4 className="font-semibold mb-2 text-[var(--foreground)]">We Accept</h4>
               <div className="flex items-center space-x-2">
-                <div className="px-3 py-1 bg-gray-800 rounded text-sm">UPI</div>
-                <div className="px-3 py-1 bg-gray-800 rounded text-sm">Razorpay</div>
-                <div className="px-3 py-1 bg-gray-800 rounded text-sm">PayU</div>
-                <div className="px-3 py-1 bg-gray-800 rounded text-sm">Cards</div>
-                <div className="px-3 py-1 bg-gray-800 rounded text-sm">COD</div>
+                <div className="px-3 py-1 bg-[var(--secondary)] rounded-lg text-sm text-[var(--muted-foreground)]">UPI</div>
+                <div className="px-3 py-1 bg-[var(--secondary)] rounded-lg text-sm text-[var(--muted-foreground)]">Razorpay</div>
+                <div className="px-3 py-1 bg-[var(--secondary)] rounded-lg text-sm text-[var(--muted-foreground)]">PayU</div>
+                <div className="px-3 py-1 bg-[var(--secondary)] rounded-lg text-sm text-[var(--muted-foreground)]">Cards</div>
+                <div className="px-3 py-1 bg-[var(--secondary)] rounded-lg text-sm text-[var(--muted-foreground)]">COD</div>
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
-              <Clock className="h-4 w-4 text-gray-400" />
-              <span className="text-gray-400 text-sm">
+              <Clock className="h-4 w-4 text-[var(--muted-foreground)]" />
+              <span className="text-[var(--muted-foreground)] text-sm">
                 © 2024 Bharat Volt Electronics. All rights reserved.
               </span>
             </div>
@@ -166,22 +164,22 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-black py-4">
+      <div className="bg-[var(--secondary)] py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <p className="text-gray-400 text-sm mb-2 md:mb-0">
+            <p className="text-[var(--muted-foreground)] text-sm mb-2 md:mb-0">
               Empowering Indian homes with cutting-edge technology
             </p>
-            <div className="flex items-center space-x-4 text-sm text-gray-400">
-              <Link href="/sitemap" className="hover:text-white transition-colors">
+            <div className="flex items-center space-x-4 text-sm text-[var(--muted-foreground)]">
+              <Link href="/sitemap" className="hover:text-[var(--primary)] transition-colors">
                 Sitemap
               </Link>
               <span>•</span>
-              <Link href="/accessibility" className="hover:text-white transition-colors">
+              <Link href="/accessibility" className="hover:text-[var(--primary)] transition-colors">
                 Accessibility
               </Link>
               <span>•</span>
-              <Link href="/careers" className="hover:text-white transition-colors">
+              <Link href="/careers" className="hover:text-[var(--primary)] transition-colors">
                 Careers
               </Link>
             </div>

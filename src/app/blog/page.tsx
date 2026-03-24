@@ -104,28 +104,30 @@ export default function BlogPage() {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[var(--background)]">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <section className="gradient-primary text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-display font-bold mb-4">Blog & Resources</h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 animate-slide-up">
+            Blog & Resources
+          </h1>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto animate-slide-in" style={{ animationDelay: '0.2s' }}>
             Expert tips, guides, and insights to help you make informed decisions about home electronics
           </p>
         </div>
-      </div>
+      </section>
 
       <div className="container mx-auto px-4 py-12">
         {/* Search and Filter */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <div className="glass bg-white/10 backdrop-blur-sm rounded-2xl shadow-luxury p-6 mb-8">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--muted-foreground)] h-5 w-5" />
               <Input
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 h-11 bg-white/20 border-white/20 text-[var(--foreground)] placeholder-[var(--muted-foreground)] focus:bg-white transition-colors rounded-xl"
               />
             </div>
             
@@ -134,8 +136,8 @@ export default function BlogPage() {
                 <Button
                   key={category.id}
                   variant={selectedCategory === category.id ? 'default' : 'outline'}
-                  size="sm"
                   onClick={() => setSelectedCategory(category.id)}
+                  className="h-11 px-6 rounded-xl"
                 >
                   {category.name}
                 </Button>
@@ -146,36 +148,37 @@ export default function BlogPage() {
 
         {/* Featured Post */}
         {filteredPosts.length > 0 && (
-          <div className="mb-12">
-            <Card className="overflow-hidden">
+          <div className="mb-16">
+            <Card className="card-premium overflow-hidden animate-slide-in">
               <div className="md:flex">
                 <div className="md:w-1/2">
-                  <div className="aspect-video bg-gray-200">
-                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+                  <div className="aspect-video bg-gradient-to-br from-[var(--secondary)] to-[var(--muted)] relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/20 to-transparent" />
+                    <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
                   </div>
                 </div>
                 <div className="md:w-1/2 p-8">
                   <div className="flex items-center space-x-2 mb-4">
-                    <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">
+                    <span className="bg-white/20 backdrop-blur-sm text-[var(--primary)] text-xs font-medium px-3 py-1 rounded-full">
                       Featured
                     </span>
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-[var(--muted-foreground)] text-sm">
                       {filteredPosts[0].category}
                     </span>
                   </div>
                   
-                  <h2 className="text-2xl font-bold mb-4 text-gray-900">
-                    <Link href={`/blog/${filteredPosts[0].slug}`} className="hover:text-blue-600 transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
+                    <Link href={`/blog/${filteredPosts[0].slug}`} className="hover:text-[var(--primary)] transition-colors">
                       {filteredPosts[0].title}
                     </Link>
                   </h2>
                   
-                  <p className="text-gray-600 mb-6 line-clamp-3">
+                  <p className="text-[var(--muted-foreground)] mb-6 leading-relaxed">
                     {filteredPosts[0].excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 text-[var(--muted-foreground)] text-sm">
                       <div className="flex items-center space-x-1">
                         <User className="h-4 w-4" />
                         <span>{filteredPosts[0].author}</span>
@@ -189,14 +192,14 @@ export default function BlogPage() {
                         <span>{filteredPosts[0].readTime}</span>
                       </div>
                     </div>
+                    
+                    <Link href={`/blog/${filteredPosts[0].slug}`}>
+                      <Button className="btn-premium">
+                        Read Full Article
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
-                  
-                  <Link href={`/blog/${filteredPosts[0].slug}`}>
-                    <Button className="bg-blue-600 hover:bg-blue-700">
-                      Read Full Article
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Button>
-                  </Link>
                 </div>
               </div>
             </Card>
@@ -205,40 +208,41 @@ export default function BlogPage() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.slice(1).map((post) => (
-            <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="aspect-video bg-gray-200">
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+          {filteredPosts.slice(1).map((post, index) => (
+            <Card key={post.id} className="card-premium hover-lift animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="aspect-video bg-gradient-to-br from-[var(--secondary)] to-[var(--muted)] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/20 to-transparent" />
+                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
               </div>
               
               <CardContent className="p-6">
                 <div className="flex items-center space-x-2 mb-3">
-                  <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded">
+                  <span className="bg-white/20 backdrop-blur-sm text-[var(--primary)] text-xs font-medium px-3 py-1 rounded-full">
                     {post.category}
                   </span>
-                  <div className="flex items-center space-x-1 text-gray-500 text-sm">
+                  <div className="flex items-center space-x-1 text-[var(--muted-foreground)] text-sm">
                     <Clock className="h-3 w-3" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
                 
-                <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-[var(--primary)] transition-colors text-[var(--foreground)]">
                   <Link href={`/blog/${post.slug}`}>
                     {post.title}
                   </Link>
                 </h3>
                 
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p className="text-[var(--muted-foreground)] mb-4 line-clamp-2">
                   {post.excerpt}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2 text-sm text-gray-500">
+                  <div className="flex items-center space-x-2 text-[var(--muted-foreground)] text-sm">
                     <User className="h-3 w-3" />
                     <span>{post.author}</span>
                   </div>
                   <Link href={`/blog/${post.slug}`}>
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="hover:bg-[var(--secondary)]">
                       Read More
                       <ArrowRight className="h-3 w-3 ml-1" />
                     </Button>
@@ -251,19 +255,21 @@ export default function BlogPage() {
 
         {/* Newsletter Signup */}
         <div className="mt-16">
-          <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0">
-            <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
-              <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+          <Card className="gradient-primary text-white overflow-hidden">
+            <CardContent className="p-8 md:p-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                Stay Updated
+              </h2>
+              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
                 Get the latest articles, tips, and exclusive offers delivered straight to your inbox
               </p>
               <div className="max-w-md mx-auto flex gap-4">
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="bg-white/20 border-white/30 text-white placeholder-white/70"
+                  className="bg-white/20 backdrop-blur-sm border-white/30 text-white placeholder-white/70 focus:bg-white/30 h-12 rounded-xl"
                 />
-                <Button className="bg-white text-blue-600 hover:bg-gray-100">
+                <Button className="bg-white text-[var(--foreground)] hover:bg-gray-100 h-12 px-8">
                   Subscribe
                 </Button>
               </div>

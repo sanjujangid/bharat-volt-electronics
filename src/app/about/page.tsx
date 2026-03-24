@@ -55,103 +55,121 @@ export default function AboutPage() {
     { number: '24/7', label: 'Customer Support' },
   ]
 
-  const team = [
-    { name: 'Rajesh Kumar', role: 'Founder & CEO', image: '/api/placeholder/200/200' },
-    { name: 'Priya Sharma', role: 'CTO', image: '/api/placeholder/200/200' },
-    { name: 'Amit Patel', role: 'Head of Operations', image: '/api/placeholder/200/200' },
-    { name: 'Neha Gupta', role: 'Customer Success', image: '/api/placeholder/200/200' },
-  ]
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[var(--background)]">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden py-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/10 to-transparent" />
+        <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-display font-bold mb-6 text-gray-900">
-              About Bharat Volt Electronics
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 text-gradient animate-slide-up">
+              About Bharat Volt
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              We are on a mission to make premium electronics and home appliances 
-              accessible to every Indian home, combining cutting-edge technology with 
-              affordable pricing and exceptional service.
+            <p className="text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-12 animate-slide-in" style={{ animationDelay: '0.2s' }}>
+              We are on a mission to transform Indian homes with premium electronics that combine 
+              cutting-edge technology, elegant design, and exceptional reliability.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Our Story
-              </Button>
-              <Button size="xl" variant="outline">
-                Contact Us
-              </Button>
+            
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-[var(--muted-foreground)] font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16">
+      {/* Our Story */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl font-display font-bold text-blue-600 mb-2">
-                  {stat.number}
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-4xl font-display font-bold mb-6 text-[var(--foreground)]">
+                  Our Story
+                </h2>
+                <div className="space-y-4 text-[var(--muted-foreground)] leading-relaxed">
+                  <p>
+                    Founded in 2018, Bharat Volt began as a small electronics showroom in Delhi 
+                    with a simple vision: to provide authentic, high-quality electronics at 
+                    competitive prices to Indian consumers.
+                  </p>
+                  <p>
+                    Over the years, we've grown from a single store to a nationwide e-commerce platform, 
+                    serving over 500,000 customers across 50+ cities. Our commitment to quality, innovation, 
+                    and customer satisfaction has made us a trusted name in the electronics retail space.
+                  </p>
+                  <p>
+                    Today, we specialize in kitchen chimneys, smart home gadgets, water purifiers, 
+                    solar equipment, and lighting solutions, with many more exciting categories coming soon.
+                  </p>
                 </div>
-                <div className="text-gray-600">{stat.label}</div>
               </div>
-            ))}
+              
+              <div className="relative">
+                <div className="aspect-square bg-gradient-to-br from-[var(--secondary)] to-[var(--muted)] rounded-3xl animate-float" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <Award className="h-20 w-20 text-[var(--primary)] mx-auto mb-4" />
+                    <div className="text-2xl font-bold text-[var(--foreground)]">6+ Years</div>
+                    <div className="text-[var(--muted-foreground)]">of Excellence</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-16 bg-gray-50">
+      {/* Timeline */}
+      <section className="py-20 bg-gradient-to-br from-[var(--secondary)] to-[var(--muted)]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-center mb-12">Our Journey</h2>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-display font-bold mb-6 text-[var(--foreground)]">
+                Our Journey
+              </h2>
+              <p className="text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto">
+                Key milestones that shaped our growth and success
+              </p>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Founded in 2018, Bharat Volt Electronics began as a small electronics showroom 
-                  in Delhi with a simple vision: to provide authentic, high-quality electronics at 
-                  competitive prices to Indian consumers.
-                </p>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Over the years, we've grown from a single store to a nationwide e-commerce platform, 
-                  serving over 500,000 customers across 50+ cities. Our commitment to quality, innovation, 
-                  and customer satisfaction has made us a trusted name in the electronics retail space.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Today, we specialize in kitchen chimneys, smart home gadgets, water purifiers, 
-                  solar equipment, and lighting solutions, with many more exciting categories coming soon.
-                </p>
-              </div>
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[var(--primary)] to-[var(--muted)]" />
               
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {milestones.map((milestone, index) => (
-                  <div
-                    key={index}
-                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
-                      selectedTimeline === index 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-gray-200 bg-white hover:border-gray-300'
-                    }`}
-                    onClick={() => setSelectedTimeline(index)}
+                  <div 
+                    key={index} 
+                    className="relative animate-slide-in" 
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                    onMouseEnter={() => setSelectedTimeline(index)}
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-2xl font-bold text-blue-600 mb-1">
+                    {/* Timeline Dot */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -top-4 w-4 h-4 bg-[var(--primary)] rounded-full border-4 border-[var(--background)] shadow-lg" />
+                    
+                    <Card className={`card-premium transition-all duration-300 ${selectedTimeline === index ? 'ring-2 ring-[var(--primary)] shadow-luxury' : ''}`}>
+                      <CardContent className="p-6 text-center">
+                        <div className="text-2xl font-bold text-[var(--primary)] mb-2">
                           {milestone.year}
                         </div>
-                        <div className="font-semibold text-gray-900">
+                        <h3 className="text-lg font-semibold mb-2 text-[var(--foreground)]">
                           {milestone.title}
-                        </div>
-                        <div className="text-sm text-gray-600 mt-1">
+                        </h3>
+                        <p className="text-[var(--muted-foreground)] text-sm">
                           {milestone.description}
-                        </div>
-                      </div>
-                    </div>
+                        </p>
+                      </CardContent>
+                    </Card>
                   </div>
                 ))}
               </div>
@@ -160,114 +178,57 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="py-16">
+      {/* Values */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold mb-4">Our Core Values</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <value.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold mb-4">Why Choose Bharat Volt?</h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              We're different from other electronics retailers
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="font-semibold text-xl mb-2">Authentic Products</h3>
-              <p className="text-blue-100">
-                100% genuine products with manufacturer warranty and after-sales support
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-display font-bold mb-6 text-[var(--foreground)]">
+                Our Core Values
+              </h2>
+              <p className="text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto">
+                The principles that guide everything we do, from product design to customer service
               </p>
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="font-semibold text-xl mb-2">Best Prices</h3>
-              <p className="text-blue-100">
-                Competitive pricing with regular discounts and special offers
-              </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <Card key={index} className="card-premium text-center animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <CardContent className="p-8">
+                    <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                      <value.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4 text-[var(--foreground)]">
+                      {value.title}
+                    </h3>
+                    <p className="text-[var(--muted-foreground)] leading-relaxed">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Headphones className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="font-semibold text-xl mb-2">Expert Support</h3>
-              <p className="text-blue-100">
-                Technical assistance, installation services, and 24/7 customer care
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold mb-4">Meet Our Team</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The passionate people behind Bharat Volt
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="w-32 h-32 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full mx-auto mb-4" />
-                <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-20 gradient-luxury text-white">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-12 text-center text-white">
-            <h2 className="text-3xl font-display font-bold mb-4">
-              Ready to Transform Your Home?
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-display font-bold mb-6">
+              Join Our Journey
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of happy customers who have chosen Bharat Volt for their electronics needs
+            <p className="text-xl mb-8 text-white/80 max-w-2xl mx-auto">
+              Be part of India's premium electronics revolution. Whether you're a customer, 
+              partner, or team member, there's a place for you at Bharat Volt.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" className="bg-white text-blue-600 hover:bg-gray-100">
-                Shop Now
+              <Button className="bg-white text-[var(--foreground)] hover:bg-gray-100 h-12 px-8">
+                Shop Products
               </Button>
-              <Button size="xl" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-                Get in Touch
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[var(--foreground)] h-12 px-8">
+                Contact Us
               </Button>
             </div>
           </div>
