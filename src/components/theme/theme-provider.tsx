@@ -16,24 +16,26 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system')
-  const [palette, setPaletteState] = useState<string>('macos-dark')
+  const [palette, setPaletteState] = useState<string>('nextjs-dark')
   const [mounted, setMounted] = useState(false)
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
     setMounted(true)
-    const savedTheme = localStorage.getItem('theme') as Theme
-    const savedPalette = localStorage.getItem('palette')
-    
-    if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
-      setThemeState(savedTheme)
-    }
-    
-    if (savedPalette && colorPalettes[savedPalette]) {
-      setPaletteState(savedPalette)
-    } else {
-      const autoPalette = getPaletteForTheme(savedTheme || 'system')
-      setPaletteState(autoPalette)
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as Theme
+      const savedPalette = localStorage.getItem('palette')
+      
+      if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+        setThemeState(savedTheme)
+      }
+      
+      if (savedPalette && colorPalettes[savedPalette]) {
+        setPaletteState(savedPalette)
+      } else {
+        const autoPalette = getPaletteForTheme(savedTheme || 'system')
+        setPaletteState(autoPalette)
+      }
     }
   }, [])
 
@@ -74,7 +76,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Listen for system theme changes
   useEffect(() => {
-    if (theme !== 'system') return
+    if (theme !== 'system' || typeof window === 'undefined') return
     
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = () => {
@@ -88,24 +90,25 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
-    localStorage.setItem('theme', newTheme)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', newTheme)
+    }
     
     // Auto-switch palette for system/light/dark themes
     if (newTheme === 'system' || newTheme === 'light' || newTheme === 'dark') {
       const autoPalette = getPaletteForTheme(newTheme)
       setPaletteState(autoPalette)
-      localStorage.setItem('palette', autoPalette)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('palette', autoPalette)
+      }
     }
   }
 
   const setPalette = (newPalette: string) => {
     if (colorPalettes[newPalette]) {
       setPaletteState(newPalette)
-      localStorage.setItem('palette', newPalette)
-      // Switch to manual theme mode when custom palette is selected
-      if (!['macos-dark', 'macos-light'].includes(newPalette)) {
-        setThemeState('system')
-        localStorage.setItem('theme', 'system')
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('palette', newPalette)
       }
     }
   }

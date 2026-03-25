@@ -8,6 +8,9 @@ import { generateAccessibilityReport, testPaletteAccessibility } from '@/lib/acc
 import { colorPalettes } from '@/lib/theme'
 import { Check, X, AlertTriangle, Eye, EyeOff } from 'lucide-react'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export default function ThemeShowcase() {
   const { theme, palette, setPalette, currentPalette } = useTheme()
   const [showAccessibility, setShowAccessibility] = useState(false)

@@ -17,6 +17,7 @@ interface Product {
   images: string[]
   inStock: boolean
   featured: boolean
+  createdAt: string
   category: {
     id: string
     name: string
