@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { 
   Package, 
   Users, 
@@ -22,22 +23,26 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { useUserStore } from '@/lib/store'
 
+// Force dynamic rendering to prevent SSR issues
+export const dynamic = 'force-dynamic'
+
 export default function AdminPage() {
   const { user } = useUserStore()
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('dashboard')
   const [products, setProducts] = useState<any[]>([])
   const [orders, setOrders] = useState<any[]>([])
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
-    // Check if user is admin
-    if (!user || user.email !== 'admin@bharatvolt.com') {
-      window.location.href = '/auth/login'
+    // Check if user is admin (only on client side)
+    if (typeof window !== 'undefined' && (!user || user.email !== 'admin@bharatvolt.com')) {
+      router.push('/auth/login')
     }
     
     // Fetch data
     fetchDashboardData()
-  }, [user])
+  }, [user, router])
 
   const fetchDashboardData = async () => {
     // Simulate fetching data
@@ -119,7 +124,7 @@ export default function AdminPage() {
               </Link>
               <Button onClick={() => {
                 useUserStore.getState().logout()
-                window.location.href = '/auth/login'
+                router.push('/auth/login')
               }}>
                 Logout
               </Button>
