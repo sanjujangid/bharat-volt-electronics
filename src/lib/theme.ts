@@ -7,26 +7,76 @@ export interface ColorPalette {
     background: string
     foreground: string
     primary: string
-    primaryForeground: string
+    'primary-foreground': string
     secondary: string
-    secondaryForeground: string
+    'secondary-foreground': string
     muted: string
-    mutedForeground: string
+    'muted-foreground': string
     accent: string
-    accentForeground: string
+    'accent-foreground': string
     destructive: string
-    destructiveForeground: string
+    'destructive-foreground': string
     border: string
     input: string
     ring: string
+    success: string
+    warning: string
+    info: string
+    card: string
+    'card-foreground': string
+    popover: string
+    'popover-foreground': string
+    footer: string
+    'footer-foreground': string
+    header: string
+    'header-foreground': string
+    sidebar: string
+    'sidebar-foreground': string
+    active: string
+    hover: string
+    focus: string
+    disabled: string
+    overlay: string
+    shadow: string
+    'text-primary': string
+    'text-secondary': string
+    'text-muted': string
+    'text-inverse': string
+    'border-light': string
+    'border-medium': string
+    'border-strong': string
+    'fill-primary': string
+    'fill-secondary': string
+    'fill-accent': string
+    outline: string
+    'outline-variant': string
+    surface: string
+    'surface-variant': string
+    'surface-container': string
+    'surface-container-low': string
+    'surface-container-high': string
+    'inverse-surface': string
+    'inverse-on-surface': string
+    'inverse-primary': string
+    scrim: string
+    'elevation-1': string
+    'elevation-2': string
+    'elevation-3': string
+    'outline-error': string
+    'surface-bright': string
+    'surface-dim': string
+    'surface-container-lowest': string
+    'surface-container-highest': string
   }
   gradients: {
     primary: string
     secondary: string
-    luxury: string
-    success: string
-    warning: string
-    danger: string
+    accent: string
+    hero: string
+    card: string
+    button: string
+    overlay: string
+    subtle: string
   }
   shadows: {
     sm: string
@@ -34,171 +84,208 @@ export interface ColorPalette {
     lg: string
     xl: string
     '2xl': string
-    luxury: string
+    card: string
+    button: string
+    modal: string
+    tooltip: string
+    dropdown: string
+    navigation: string
+    elevation: string
   }
 }
 
-// Next.js Inspired Sleek Themes with macOS Glassmorphism
+// Vercel Inspired Sleek Themes with macOS Glassmorphism
 export const colorPalettes: Record<string, ColorPalette> = {
-  // Next.js Dark - Sleek dark theme with glassmorphism
-  'nextjs-dark': {
-    name: 'nextjs-dark',
-    displayName: 'Next.js Dark',
+  'vercel-dark': {
+    name: 'vercel-dark',
+    displayName: 'Vercel Dark',
     colors: {
+      primary: '#000000',
+      'primary-foreground': '#ffffff',
+      secondary: '#171717',
+      'secondary-foreground': '#fafafa',
+      accent: '#0070f3',
+      'accent-foreground': '#ffffff',
+      muted: '#262626',
+      'muted-foreground': '#a3a3a3',
       background: '#000000',
       foreground: '#fafafa',
-      primary: '#0070f3', // Next.js blue
-      primaryForeground: '#ffffff',
-      secondary: '#111111',
-      secondaryForeground: '#fafafa',
-      muted: '#1a1a1a',
-      mutedForeground: '#888888',
-      accent: '#7928ca', // Next.js purple accent
-      accentForeground: '#ffffff',
-      destructive: '#ff4757',
-      destructiveForeground: '#ffffff',
-      border: '#2a2a2a',
-      input: '#1a1a1a',
+      border: '#262626',
+      input: '#171717',
       ring: '#0070f3',
+      destructive: '#dc2626',
+      'destructive-foreground': '#ffffff',
+      success: '#22c55e',
+      warning: '#f59e0b',
+      info: '#3b82f6',
+      card: '#171717',
+      'card-foreground': '#fafafa',
+      popover: '#171717',
+      'popover-foreground': '#fafafa',
+      footer: '#0a0a0a',
+      'footer-foreground': '#a3a3a3',
+      header: '#000000',
+      'header-foreground': '#fafafa',
+      sidebar: '#171717',
+      'sidebar-foreground': '#fafafa',
+      active: '#0070f3',
+      hover: '#262626',
+      focus: '#0070f3',
+      disabled: '#525252',
+      overlay: 'rgba(0, 0, 0, 0.8)',
+      shadow: 'rgba(0, 0, 0, 0.3)',
+      'text-primary': '#fafafa',
+      'text-secondary': '#a3a3a3',
+      'text-muted': '#737373',
+      'text-inverse': '#000000',
+      'border-light': '#404040',
+      'border-medium': '#262626',
+      'border-strong': '#171717',
+      'fill-primary': '#000000',
+      'fill-secondary': '#171717',
+      'fill-accent': '#0070f3',
+      'outline': '#0070f3',
+      'outline-variant': '#404040',
+      'surface': '#171717',
+      'surface-variant': '#262626',
+      'surface-container': '#0a0a0a',
+      'surface-container-low': '#171717',
+      'surface-container-high': '#262626',
+      'inverse-surface': '#fafafa',
+      'inverse-on-surface': '#000000',
+      'inverse-primary': '#0070f3',
+      'scrim': 'rgba(0, 0, 0, 0.8)',
+      'elevation-1': '#262626',
+      'elevation-2': '#404040',
+      'elevation-3': '#525252',
+      'outline-error': '#dc2626',
+      'surface-bright': '#262626',
+      'surface-dim': '#171717',
+      'surface-container-lowest': '#000000',
+      'surface-container-highest': '#404040',
     },
     gradients: {
-      primary: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      secondary: 'linear-gradient(135deg, #111111 0%, #1a1a1a 100%)',
-      luxury: 'linear-gradient(135deg, #000000 0%, #2a2a2a 100%)',
-      success: 'linear-gradient(135deg, #00d084 0%, #00a86b 100%)',
-      warning: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-      danger: 'linear-gradient(135deg, #ff4757 0%, #ee5a6f 100%)',
+      primary: 'linear-gradient(135deg, #000000 0%, #171717 100%)',
+      secondary: 'linear-gradient(135deg, #171717 0%, #262626 100%)',
+      accent: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
+      hero: 'linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #171717 100%)',
+      card: 'linear-gradient(135deg, #171717 0%, #262626 100%)',
+      button: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
+      overlay: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%)',
+      subtle: 'linear-gradient(135deg, #262626 0%, #404040 100%)',
     },
     shadows: {
-      sm: '0 1px 2px rgba(0, 0, 0, 0.3)',
-      md: '0 4px 6px rgba(0, 0, 0, 0.4)',
-      lg: '0 10px 15px rgba(0, 0, 0, 0.5)',
-      xl: '0 20px 25px rgba(0, 0, 0, 0.6)',
-      '2xl': '0 25px 50px rgba(0, 0, 0, 0.7)',
-      luxury: '0 20px 40px rgba(0, 112, 243, 0.15)',
+      sm: '0 1px 2px rgba(0, 0, 0, 0.5)',
+      md: '0 4px 6px rgba(0, 0, 0, 0.6)',
+      lg: '0 10px 15px rgba(0, 0, 0, 0.7)',
+      xl: '0 20px 25px rgba(0, 0, 0, 0.8)',
+      '2xl': '0 25px 50px rgba(0, 0, 0, 0.9)',
+      card: '0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3)',
+      button: '0 2px 4px rgba(0, 0, 0, 0.5)',
+      modal: '0 25px 50px -12px rgba(0, 0, 0, 0.8)',
+      tooltip: '0 4px 6px rgba(0, 0, 0, 0.6)',
+      dropdown: '0 10px 25px rgba(0, 0, 0, 0.7)',
+      navigation: '0 2px 8px rgba(0, 0, 0, 0.5)',
+      elevation: '0 8px 16px rgba(0, 0, 0, 0.6)',
     },
   },
-
-  // Next.js Light - Clean light theme
-  'nextjs-light': {
-    name: 'nextjs-light',
-    displayName: 'Next.js Light',
+  'vercel-light': {
+    name: 'vercel-light',
+    displayName: 'Vercel Light',
     colors: {
+      primary: '#000000',
+      'primary-foreground': '#ffffff',
+      secondary: '#f4f4f5',
+      'secondary-foreground': '#18181b',
+      accent: '#0070f3',
+      'accent-foreground': '#ffffff',
+      muted: '#f4f4f5',
+      'muted-foreground': '#71717a',
       background: '#ffffff',
-      foreground: '#000000',
-      primary: '#0070f3', // Next.js blue
-      primaryForeground: '#ffffff',
-      secondary: '#f8f9fa',
-      secondaryForeground: '#000000',
-      muted: '#f1f3f4',
-      mutedForeground: '#5f6368',
-      accent: '#7928ca', // Next.js purple accent
-      accentForeground: '#ffffff',
-      destructive: '#dc3545',
-      destructiveForeground: '#ffffff',
-      border: '#dadce0',
-      input: '#ffffff',
+      foreground: '#18181b',
+      border: '#e4e4e7',
+      input: '#f4f4f5',
       ring: '#0070f3',
+      destructive: '#dc2626',
+      'destructive-foreground': '#ffffff',
+      success: '#22c55e',
+      warning: '#f59e0b',
+      info: '#3b82f6',
+      card: '#ffffff',
+      'card-foreground': '#18181b',
+      popover: '#ffffff',
+      'popover-foreground': '#18181b',
+      footer: '#fafafa',
+      'footer-foreground': '#71717a',
+      header: '#ffffff',
+      'header-foreground': '#18181b',
+      sidebar: '#f4f4f5',
+      'sidebar-foreground': '#18181b',
+      active: '#0070f3',
+      hover: '#f4f4f5',
+      focus: '#0070f3',
+      disabled: '#d4d4d8',
+      overlay: 'rgba(0, 0, 0, 0.5)',
+      shadow: 'rgba(0, 0, 0, 0.1)',
+      'text-primary': '#18181b',
+      'text-secondary': '#71717a',
+      'text-muted': '#a1a1aa',
+      'text-inverse': '#ffffff',
+      'border-light': '#f4f4f5',
+      'border-medium': '#e4e4e7',
+      'border-strong': '#d4d4d8',
+      'fill-primary': '#ffffff',
+      'fill-secondary': '#f4f4f5',
+      'fill-accent': '#0070f3',
+      'outline': '#0070f3',
+      'outline-variant': '#d4d4d8',
+      'surface': '#ffffff',
+      'surface-variant': '#f4f4f5',
+      'surface-container': '#fafafa',
+      'surface-container-low': '#ffffff',
+      'surface-container-high': '#f4f4f5',
+      'inverse-surface': '#18181b',
+      'inverse-on-surface': '#ffffff',
+      'inverse-primary': '#0070f3',
+      'scrim': 'rgba(0, 0, 0, 0.5)',
+      'elevation-1': '#f4f4f5',
+      'elevation-2': '#e4e4e7',
+      'elevation-3': '#d4d4d8',
+      'outline-error': '#dc2626',
+      'surface-bright': '#ffffff',
+      'surface-dim': '#f4f4f5',
+      'surface-container-lowest': '#ffffff',
+      'surface-container-highest': '#e4e4e7',
     },
     gradients: {
-      primary: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      secondary: 'linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%)',
-      luxury: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-      success: 'linear-gradient(135deg, #00d084 0%, #00a86b 100%)',
-      warning: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-      danger: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)',
+      primary: 'linear-gradient(135deg, #ffffff 0%, #f4f4f5 100%)',
+      secondary: 'linear-gradient(135deg, #f4f4f5 0%, #e4e4e7 100%)',
+      accent: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
+      hero: 'linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #f4f4f5 100%)',
+      card: 'linear-gradient(135deg, #ffffff 0%, #f4f4f5 100%)',
+      button: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
+      overlay: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%)',
+      subtle: 'linear-gradient(135deg, #f4f4f5 0%, #e4e4e7 100%)',
     },
     shadows: {
       sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
       md: '0 4px 6px rgba(0, 0, 0, 0.07)',
       lg: '0 10px 15px rgba(0, 0, 0, 0.1)',
-      xl: '0 20px 25px rgba(0, 0, 0, 0.12)',
+      xl: '0 20px 25px rgba(0, 0, 0, 0.1)',
       '2xl': '0 25px 50px rgba(0, 0, 0, 0.15)',
-      luxury: '0 20px 40px rgba(0, 112, 243, 0.08)',
-    },
-  },
-
-  // macOS Glass - Pure glassmorphism theme
-  'macos-glass': {
-    name: 'macos-glass',
-    displayName: 'macOS Glass',
-    colors: {
-      background: '#000000',
-      foreground: '#ffffff',
-      primary: '#007aff', // macOS blue
-      primaryForeground: '#ffffff',
-      secondary: '#1e1e1e',
-      secondaryForeground: '#ffffff',
-      muted: '#2d2d2d',
-      mutedForeground: '#999999',
-      accent: '#5ac8fa', // Light blue accent
-      accentForeground: '#000000',
-      destructive: '#ff453a',
-      destructiveForeground: '#ffffff',
-      border: '#3a3a3a',
-      input: '#1e1e1e',
-      ring: '#007aff',
-    },
-    gradients: {
-      primary: 'linear-gradient(135deg, #007aff 0%, #5ac8fa 100%)',
-      secondary: 'linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%)',
-      luxury: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-      success: 'linear-gradient(135deg, #30d158 0%, #32d74b 100%)',
-      warning: 'linear-gradient(135deg, #ff9500 0%, #ffcc02 100%)',
-      danger: 'linear-gradient(135deg, #ff453a 0%, #ff3b30 100%)',
-    },
-    shadows: {
-      sm: '0 1px 2px rgba(0, 0, 0, 0.3)',
-      md: '0 4px 6px rgba(0, 0, 0, 0.4)',
-      lg: '0 10px 15px rgba(0, 0, 0, 0.5)',
-      xl: '0 20px 25px rgba(0, 0, 0, 0.6)',
-      '2xl': '0 25px 50px rgba(0, 0, 0, 0.7)',
-      luxury: '0 20px 40px rgba(0, 122, 255, 0.25)',
-    },
-  },
-
-  // Minimal Glass - Clean glassmorphism
-  'minimal-glass': {
-    name: 'minimal-glass',
-    displayName: 'Minimal Glass',
-    colors: {
-      background: '#0a0a0a',
-      foreground: '#ffffff',
-      primary: '#0070f3',
-      primaryForeground: '#ffffff',
-      secondary: '#151515',
-      secondaryForeground: '#ffffff',
-      muted: '#252525',
-      mutedForeground: '#888888',
-      accent: '#0070f3',
-      accentForeground: '#ffffff',
-      destructive: '#ff4757',
-      destructiveForeground: '#ffffff',
-      border: '#333333',
-      input: '#151515',
-      ring: '#0070f3',
-    },
-    gradients: {
-      primary: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      secondary: 'linear-gradient(135deg, #151515 0%, #252525 100%)',
-      luxury: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
-      success: 'linear-gradient(135deg, #00d084 0%, #00a86b 100%)',
-      warning: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-      danger: 'linear-gradient(135deg, #ff4757 0%, #ee5a6f 100%)',
-    },
-    shadows: {
-      sm: '0 1px 2px rgba(0, 0, 0, 0.4)',
-      md: '0 4px 6px rgba(0, 0, 0, 0.5)',
-      lg: '0 10px 15px rgba(0, 0, 0, 0.6)',
-      xl: '0 20px 25px rgba(0, 0, 0, 0.7)',
-      '2xl': '0 25px 50px rgba(0, 0, 0, 0.8)',
-      luxury: '0 20px 40px rgba(0, 112, 243, 0.2)',
+      card: '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)',
+      button: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      modal: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      tooltip: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      dropdown: '0 10px 25px rgba(0, 0, 0, 0.15)',
+      navigation: '0 2px 8px rgba(0, 0, 0, 0.1)',
+      elevation: '0 8px 16px rgba(0, 0, 0, 0.1)',
     },
   },
 }
 
-export const defaultPalette = 'nextjs-dark'
-export const systemPalettes = ['nextjs-dark', 'nextjs-light'] as const
+export const defaultPalette = 'vercel-dark'
+export const systemPalettes = ['vercel-dark', 'vercel-light'] as const
 
 export function getSystemTheme(): 'light' | 'dark' {
   if (typeof window === 'undefined') return 'dark'
@@ -208,9 +295,9 @@ export function getSystemTheme(): 'light' | 'dark' {
 export function getPaletteForTheme(theme: Theme): string {
   if (theme === 'system') {
     const systemTheme = getSystemTheme()
-    return systemTheme === 'dark' ? 'nextjs-dark' : 'nextjs-light'
+    return systemTheme === 'dark' ? 'vercel-dark' : 'vercel-light'
   }
-  return theme === 'dark' ? 'nextjs-dark' : 'nextjs-light'
+  return theme === 'dark' ? 'vercel-dark' : 'vercel-light'
 }
 
 export function generateCSSVariables(palette: ColorPalette): string {

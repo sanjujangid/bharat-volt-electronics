@@ -20,6 +20,7 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -48,8 +49,8 @@ export default function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled
-            ? 'glass-strong shadow-lg border-b border-[var(--glass-border)]'
-            : 'glass-light border-b border-transparent'
+            ? 'bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)]'
+            : 'bg-[var(--background)]/60 backdrop-blur-lg border-b border-transparent'
         )}
       >
         <div className="container mx-auto px-4">
@@ -66,7 +67,7 @@ export default function Header() {
                   {item.dropdown ? (
                     <div className="relative">
                       <button
-                        className="flex items-center space-x-1 text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200 font-medium py-2"
+                        className="flex items-center space-x-1 text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-200 font-medium py-2"
                         onMouseEnter={() => setIsCategoriesOpen(true)}
                         onMouseLeave={() => setIsCategoriesOpen(false)}
                       >
@@ -88,7 +89,7 @@ export default function Header() {
                             <Link
                               key={dropdownItem.name}
                               href={dropdownItem.href}
-                              className="block px-4 py-3 rounded-xl hover:bg-[var(--secondary)] transition-colors duration-200 text-[var(--foreground)] hover:text-[var(--primary)]"
+                              className="block px-4 py-3 rounded-xl hover:bg-[var(--secondary)] transition-colors duration-200 text-[var(--foreground)] hover:text-[var(--accent)]"
                             >
                               {dropdownItem.name}
                             </Link>
@@ -99,7 +100,7 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200 font-medium py-2"
+                      className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-200 font-medium py-2"
                     >
                       {item.name}
                     </Link>
@@ -119,7 +120,7 @@ export default function Header() {
                   variant="ghost"
                   size="icon"
                   onClick={() => setIsSearchOpen(true)}
-                  className="h-10 w-10 rounded-xl hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)] hover:text-[var(--primary)]"
+                  className="h-10 w-10 rounded-lg hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)] hover:text-[var(--accent)]"
                   aria-label="Open search"
                 >
                   <Search className="h-5 w-5" />
@@ -130,8 +131,8 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:flex h-10 w-10 rounded-xl hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)] hover:text-[var(--primary)]"
-                aria-label="View wishlist"
+                className="h-10 w-10 rounded-lg hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)] hover:text-[var(--accent)]"
+                aria-label="Wishlist"
               >
                 <Heart className="h-5 w-5" />
               </Button>
@@ -140,7 +141,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:flex h-10 w-10 rounded-xl hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)] hover:text-[var(--primary)]"
+                className="hidden md:flex h-10 w-10 rounded-lg hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)] hover:text-[var(--accent)]"
                 aria-label="User account"
               >
                 <User className="h-5 w-5" />
@@ -153,7 +154,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden h-10 w-10 rounded-xl hover:bg-[var(--secondary)] transition-colors"
+                className="lg:hidden h-10 w-10 rounded-lg hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)]"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle mobile menu"
                 aria-expanded={isMobileMenuOpen}

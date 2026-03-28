@@ -183,7 +183,7 @@ export default function ThemeShowcase() {
                       </Button>
                     </div>
                     <div className="p-3 rounded-lg border" style={{ backgroundColor: paletteData.colors.muted }}>
-                      <div className="text-sm" style={{ color: paletteData.colors.mutedForeground }}>
+                      <div className="text-sm" style={{ color: paletteData.colors['muted-foreground'] }}>
                         Muted text example
                       </div>
                     </div>
