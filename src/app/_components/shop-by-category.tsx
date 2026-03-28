@@ -92,7 +92,7 @@ export default function ShopByCategory() {
                   <p className="text-sm text-[var(--muted-foreground)] mb-3">
                     {category.description}
                   </p>
-                  <p className="text-xs text-[var(--primary)] font-medium">
+                  <p className="text-xs text-[var(--muted-foreground)] font-medium">
                     {category.products}
                   </p>
                 </CardContent>
@@ -103,7 +103,7 @@ export default function ShopByCategory() {
         
         <div className="text-center mt-12">
           <Link href="/categories">
-            <Button variant="outline" className="h-12 px-8 rounded-xl border-2 border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]">
+            <Button variant="outline" className="h-12 px-8 rounded-xl border-2 border-[var(--border)] text-[var(--primary)] hover:bg-[var(--secondary)] hover:text-white">
               View All Categories
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

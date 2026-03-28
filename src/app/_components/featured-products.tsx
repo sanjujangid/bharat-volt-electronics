@@ -1,9 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Star, Heart } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { ArrowRight, Star, Heart, ShoppingCart } from 'lucide-react'
+import { Button, Card, Chip } from '@heroui/react'
 import { cn } from '@/lib/utils'
 
 interface Product {
@@ -121,19 +120,19 @@ export default function FeaturedProducts() {
 
   const renderStars = (rating: number) => {
     return (
-      <div className="flex items-center">
+      <div className="flex items-center gap-1">
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}
             className={cn(
-              "h-4 w-4",
+              "h-3 w-3",
               i < Math.floor(rating) 
                 ? "fill-yellow-400 text-yellow-400" 
                 : "text-[var(--muted-foreground)]"
             )}
           />
         ))}
-        <span className="text-sm text-[var(--muted-foreground)] ml-1">
+        <span className="text-xs text-[var(--muted-foreground)] ml-1">
           {rating}
         </span>
       </div>
@@ -141,99 +140,125 @@ export default function FeaturedProducts() {
   }
 
   return (
-    <section className="py-12 bg-[var(--secondary)]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-[var(--foreground)]">
+    <section className="py-20 bg-black">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-display font-bold mb-6 text-white tracking-tight">
             Featured Products
           </h2>
-          <p className="text-lg text-[var(--muted-foreground)] max-w-3xl mx-auto">
-            Handpicked premium products with the best features, quality, and value for money
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Discover our handpicked selection of premium products with exceptional quality and unbeatable value
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {featuredProducts.map((product, index) => (
-            <div key={product.id} className="card-premium p-4 hover-lift group">
-              <div className="relative">
-                <div className="aspect-square bg-[var(--muted)] relative overflow-hidden rounded-lg">
-                  <div className="absolute inset-0 bg-[var(--secondary)] animate-pulse-slow" />
-                  
-                  {/* Product placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-[var(--muted-foreground)] text-center">
-                      <div className="text-4xl mb-2">📦</div>
-                      <div className="text-sm">Product Image</div>
-                    </div>
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {featuredProducts.map((product) => (
+            <Card 
+              key={product.id} 
+              className="group border border-gray-800 bg-gray-900 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden hover:-translate-y-3"
+            >
+              {/* Product Image */}
+              <div className="relative aspect-square bg-gradient-to-br from-gray-800 to-gray-700">
+                {/* Placeholder */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-gray-400 text-center">
+                    <div className="text-6xl mb-3 opacity-40">📦</div>
+                    <div className="text-sm opacity-60 font-medium">Product</div>
                   </div>
-                  
-                  <div className="absolute top-3 right-3 z-10">
-                    <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold shadow-lg">
-                      -{product.discount}%
-                    </span>
-                  </div>
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="bg-[var(--primary)] text-white px-2 py-1 rounded-full text-xs font-semibold shadow-lg">
-                      {product.badge}
-                    </span>
-                  </div>
-                  
-                  {/* Wishlist button */}
-                  <button className="absolute bottom-3 right-3 w-9 h-9 glass-strong rounded-full flex items-center justify-center text-[var(--foreground)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] transition-all duration-300 opacity-0 group-hover:opacity-100 border border-[var(--glass-border)] shadow-lg">
-                    <Heart className="h-4 w-4" />
-                  </button>
                 </div>
+                
+                {/* Badges */}
+                <div className="absolute top-4 left-4 z-10 m-2">
+                  <Chip 
+                    size="sm" 
+                    variant="secondary" 
+                    className="bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-semibold shadow-lg border-0 px-3 py-1"
+                  >
+                    {product.badge}
+                  </Chip>
+                </div>
+                
+                <div className="absolute top-4 right-4 z-10 m-2">
+                  <Chip 
+                    size="sm" 
+                    variant="secondary"
+                    className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold shadow-lg border-0 px-3 py-1"
+                  >
+                    -{product.discount}%
+                  </Chip>
+                </div>
+                
+                {/* Wishlist Button */}
+                <button className="absolute bottom-4 right-4 w-10 h-10 bg-gray-800/95 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:bg-red-500 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-xl border border-gray-700">
+                  <Heart className="h-4 w-4" />
+                </button>
               </div>
               
-              <div className="mt-4">
-                <div className="mb-2">
-                  <span className="text-xs text-[var(--primary)] font-medium">
+              {/* Product Info */}
+              <div className="p-6">
+                {/* Category */}
+                <div className="mb-3">
+                  <span className="text-xs text-blue-400 font-bold tracking-wider uppercase">
                     {product.category}
                   </span>
                 </div>
                 
-                <h3 className="font-semibold text-base mb-2 text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors line-clamp-2">
+                {/* Product Name */}
+                <h3 className="font-bold text-base mb-4 text-white group-hover:text-blue-400 transition-colors line-clamp-2 leading-tight">
                   {product.name}
                 </h3>
                 
-                <div className="flex items-center mb-3">
+                {/* Rating */}
+                <div className="flex items-center mb-4">
                   {renderStars(product.rating)}
-                  <span className="text-sm text-[var(--muted-foreground)] ml-2">
-                    ({product.reviews})
+                  <span className="text-xs text-gray-400 ml-2 font-medium">
+                    ({product.reviews.toLocaleString()})
                   </span>
                 </div>
                 
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xl font-bold text-[var(--foreground)]">
-                        ₹{product.price.toLocaleString('en-IN')}
-                      </span>
-                      <span className="text-sm text-[var(--muted-foreground)] line-through">
-                        ₹{product.originalPrice.toLocaleString('en-IN')}
-                      </span>
-                    </div>
-                  </div>
+                {/* Price */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-2xl font-bold text-white">
+                    ₹{product.price.toLocaleString('en-IN')}
+                  </span>
+                  <span className="text-sm text-gray-500 line-through font-medium">
+                    ₹{product.originalPrice.toLocaleString('en-IN')}
+                  </span>
                 </div>
-                
-                <div className="flex gap-2">
-                  <button className="flex-1 btn-nextjs h-9">
+
+                {/* Actions */}
+                <div className="flex gap-2 mt-4">
+                  <Button 
+                    size="sm" 
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 text-sm font-semibold h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 hover:scale-105 items-center justify-center"
+                  >
+                    <ShoppingCart className="h-4 w-4 mr-2" />
                     Add to Cart
-                  </button>
-                  <button className="btn-glass h-9 w-9 p-0 flex items-center justify-center">
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="w-12 h-12 p-0 border-2 border-gray-600 text-gray-400 hover:border-red-500 hover:text-red-500 hover:bg-red-500/10 transition-all duration-300 hover:scale-110 shadow-md hover:shadow-lg rounded-full"
+                  >
                     <Heart className="h-4 w-4" />
-                  </button>
+                  </Button>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        {/* View All Button */}
+        <div className="text-center mt-16">
           <Link href="/products">
-            <Button variant="outline" className="h-10 px-6 rounded-xl border-2 border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--secondary)]">
+            <Button 
+              size="lg"
+              className="h-14 px-12 bg-gradient-to-r from-gray-700 to-gray-600 text-white hover:from-gray-800 hover:to-gray-700 font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-full"
+            >
               View All Products
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-3 h-5 w-5" />
             </Button>
           </Link>
         </div>

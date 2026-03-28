@@ -78,7 +78,7 @@ export default function Header() {
                       {/* Dropdown Menu */}
                       <div
                         className={cn(
-                          'absolute top-full left-0 mt-2 w-64 bg-[var(--background)]/95 backdrop-blur-xl rounded-2xl shadow-luxury border border-[var(--border)] overflow-hidden transition-all duration-300',
+                          'absolute top-full left-0 mt-1 w-48 bg-[var(--popover)] border border-[var(--border)] rounded-xl shadow-lg transition-all duration-200',
                           isCategoriesOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
                         )}
                         onMouseEnter={() => setIsCategoriesOpen(true)}
@@ -154,8 +154,8 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden h-10 w-10 rounded-lg hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)]"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden h-10 w-10 rounded-lg hover:bg-[var(--secondary)] transition-colors text-[var(--foreground)]"
                 aria-label="Toggle mobile menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -186,7 +186,7 @@ export default function Header() {
                     onClick={() => setIsSearchOpen(false)}
                     className="h-10 w-10 rounded-xl"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-4 w-4" />
                   </Button>
                 </div>
               </div>

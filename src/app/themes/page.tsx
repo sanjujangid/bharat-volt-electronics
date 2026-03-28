@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useTheme } from '@/components/theme/theme-provider'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { generateAccessibilityReport, testPaletteAccessibility } from '@/lib/accessibility'
@@ -12,9 +11,10 @@ import { Check, X, AlertTriangle, Eye, EyeOff } from 'lucide-react'
 export const dynamic = 'force-dynamic'
 
 export default function ThemeShowcase() {
-  const { theme, palette, setPalette, currentPalette } = useTheme()
   const [showAccessibility, setShowAccessibility] = useState(false)
 
+  // Use hardcoded palette for now to avoid theme provider issues
+  const currentPalette = colorPalettes['vercel-dark'] || colorPalettes[Object.keys(colorPalettes)[0]]
   const accessibilityReport = generateAccessibilityReport(colorPalettes)
   const currentAccessibility = testPaletteAccessibility(currentPalette)
 
@@ -131,9 +131,11 @@ export default function ThemeShowcase() {
               <Card
                 key={key}
                 className={`card-premium cursor-pointer hover-lift ${
-                  palette === key ? 'ring-2 ring-[var(--primary)]' : ''
+                  'vercel-dark' === key ? 'ring-2 ring-[var(--primary)]' : ''
                 }`}
-                onClick={() => setPalette(key)}
+                onClick={() => {
+                  // setPalette(key) - disabled for now
+                }}
               >
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">

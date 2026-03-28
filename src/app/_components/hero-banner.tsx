@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, Play, ChevronLeft, ChevronRight, Sparkles, Shield, Zap, Droplets, Sun, Wind } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -21,6 +21,43 @@ export default function HeroBanner() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isHovering, setIsHovering] = useState(false)
+
+  const getFeatureIcon = (feature: string) => {
+    const iconMap: { [key: string]: React.ReactNode } = {
+      "Auto-Clean Technology": <Sparkles className="h-4 w-4" />,
+      "LED Lighting": <Zap className="h-4 w-4" />,
+      "Touch Controls": <Wind className="h-4 w-4" />,
+      "Low Noise 46dB": <Shield className="h-4 w-4" />,
+      "RO+UV+UF+Alkaline": <Droplets className="h-4 w-4" />,
+      "Mineral Retention": <Sparkles className="h-4 w-4" />,
+      "TDS Control": <Shield className="h-4 w-4" />,
+      "Copper Purification": <Droplets className="h-4 w-4" />,
+      "30% Govt. Subsidy": <Sun className="h-4 w-4" />,
+      "5-Year Warranty": <Shield className="h-4 w-4" />,
+      "Net Metering": <Zap className="h-4 w-4" />,
+      "Smart Monitoring": <Wind className="h-4 w-4" />
+    }
+    return iconMap[feature] || <Sparkles className="h-4 w-4" />
+  }
+
+  const getFeatureColor = (feature: string) => {
+    const colorMap: { [key: string]: string } = {
+      "Auto-Clean Technology": "bg-blue-500/20 text-blue-300 border-blue-400/30",
+      "LED Lighting": "bg-yellow-500/20 text-yellow-300 border-yellow-400/30",
+      "Touch Controls": "bg-purple-500/20 text-purple-300 border-purple-400/30",
+      "Low Noise 46dB": "bg-green-500/20 text-green-300 border-green-400/30",
+      "RO+UV+UF+Alkaline": "bg-cyan-500/20 text-cyan-300 border-cyan-400/30",
+      "Mineral Retention": "bg-blue-500/20 text-blue-300 border-blue-400/30",
+      "TDS Control": "bg-orange-500/20 text-orange-300 border-orange-400/30",
+      "Copper Purification": "bg-amber-500/20 text-amber-300 border-amber-400/30",
+      "30% Govt. Subsidy": "bg-emerald-500/20 text-emerald-300 border-emerald-400/30",
+      "5-Year Warranty": "bg-indigo-500/20 text-indigo-300 border-indigo-400/30",
+      "Net Metering": "bg-violet-500/20 text-violet-300 border-violet-400/30",
+      "Smart Monitoring": "bg-pink-500/20 text-pink-300 border-pink-400/30"
+    }
+    return colorMap[feature] || "bg-gray-500/20 text-gray-300 border-gray-400/30"
+  };
 
   const heroSlides: HeroSlide[] = [
     {
@@ -48,9 +85,9 @@ export default function HeroBanner() {
       cta: "View Solar Products",
       href: "/categories/solar",
       features: ["30% Govt. Subsidy", "5-Year Warranty", "Net Metering", "Smart Monitoring"],
-      badge: "Limited Offer"
+      badge: "Eco Choice"
     }
-  ]
+  ];
 
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -94,7 +131,11 @@ export default function HeroBanner() {
   }
 
   return (
-    <section className="relative h-[700px] overflow-hidden bg-black">
+    <section 
+      className="relative h-[700px] overflow-hidden bg-black"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       <div className="absolute inset-0">
         {/* Dynamic Background */}
         <div className="absolute inset-0 bg-[var(--primary)]/10 z-10" />
@@ -138,8 +179,11 @@ export default function HeroBanner() {
             {/* Features */}
             <div className="flex flex-wrap gap-3 mb-8">
               {heroSlides[currentSlide].features.map((feature, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-                  <span className="text-white text-sm font-medium">{feature}</span>
+                <div key={index} className={`backdrop-blur-sm rounded-full px-6 py-3 border min-w-fit ${getFeatureColor(feature)}`}>
+                  <div className="flex items-center">
+                    <span className="text-base mr-2">{getFeatureIcon(feature)}</span>
+                    <span className="text-sm font-medium">{feature}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -154,7 +198,7 @@ export default function HeroBanner() {
               </Link>
               <Button 
                 variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10 h-14 px-8 rounded-xl backdrop-blur-sm"
+                className="border-white/30 text-white hover:bg-white/10 h-14 px-8 rounded-xl backdrop-blur-sm bg-white/5"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
@@ -167,13 +211,19 @@ export default function HeroBanner() {
       {/* Navigation Controls */}
       <button
         onClick={prevSlide}
-        className="absolute left-8 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+        className={cn(
+          "absolute left-8 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300",
+          !isHovering && "opacity-0 pointer-events-none"
+        )}
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-8 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+        className={cn(
+          "absolute right-8 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300",
+          !isHovering && "opacity-0 pointer-events-none"
+        )}
       >
         <ChevronRight className="h-6 w-6" />
       </button>
