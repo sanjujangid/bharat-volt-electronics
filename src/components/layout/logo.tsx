@@ -7,13 +7,6 @@ interface LogoProps {
 }
 
 export default function Logo({ size = 'md', className = '', showText = true }: LogoProps) {
-  const sizeClasses = {
-    sm: 'h-8 w-8',
-    md: 'h-12 w-12',
-    lg: 'h-16 w-16',
-    xl: 'h-20 w-20'
-  }
-
   const textSizes = {
     sm: 'text-lg',
     md: 'text-2xl',
@@ -21,30 +14,36 @@ export default function Logo({ size = 'md', className = '', showText = true }: L
     xl: 'text-4xl'
   }
 
-  return (
-    <div className={`flex items-center space-x-3 ${className}`}>
-      {/* Logo Icon */}
-      <div className={`${sizeClasses[size]} bg-gradient-to-br from-[#0070f3] to-[#4c8bf5] rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden group`}>
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/20" />
-        
-        {/* "BV" Monogram */}
-        <div className="relative text-white font-bold">
-          <span className="text-xs leading-none">BV</span>
-        </div>
-        
-        {/* Hover effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#4c8bf5] to-[#0070f3] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+  const subTextSizes = {
+    sm: 'text-xs',
+    md: 'text-sm',
+    lg: 'text-base',
+    xl: 'text-lg'
+  }
 
-      {/* Logo Text */}
+  const fontWeights = {
+    sm: 'font-semibold',
+    md: 'font-bold',
+    lg: 'font-extrabold',
+    xl: 'font-black'
+  }
+
+  return (
+    <div className={`flex items-center ${className}`}>
       {showText && (
         <div className="flex flex-col">
-          <div className={`font-display font-bold ${textSizes[size]} text-[var(--foreground)] leading-tight`}>
-            <span className="text-[#0070f3]">Bharat</span>{' '}
-            <span className="text-[#4c8bf5]">Volt</span>
+          {/* Main Logo Text - Bharat Volt */}
+          <div className={`font-sans ${fontWeights[size]} ${textSizes[size]} leading-tight tracking-tight`}>
+            <span className="bg-gradient-to-r from-[#0070f3] to-[#4c8bf5] bg-clip-text text-transparent">
+              Bharat
+            </span>
+            <span className="bg-gradient-to-r from-[#4c8bf5] to-[#0070f3] bg-clip-text text-transparent ml-2">
+              Volt
+            </span>
           </div>
-          <div className={`text-[var(--muted-foreground)] font-medium ${size === 'sm' ? 'text-xs' : size === 'md' ? 'text-sm' : 'text-base'}`}>
+          
+          {/* Subtitle - Electronics */}
+          <div className={`${subTextSizes[size]} text-[var(--muted-foreground)] font-medium tracking-wide mt-1`}>
             Electronics
           </div>
         </div>
@@ -55,20 +54,44 @@ export default function Logo({ size = 'md', className = '', showText = true }: L
 
 // Simplified version for small spaces (like header)
 export function LogoIcon({ size = 'md', className = '' }: { size?: 'sm' | 'md' | 'lg' | 'xl', className?: string }) {
-  return <Logo size={size} className={className} showText={false} />
+  return <Logo size={size} className={className} showText={true} />
 }
 
 // Compact version for mobile
 export function CompactLogo({ className = '' }: { className?: string }) {
   return (
-    <div className={`flex items-center space-x-2 ${className}`}>
-      <div className="h-10 w-10 bg-gradient-to-br from-[#0070f3] to-[#4c8bf5] rounded-lg flex items-center justify-center shadow-md">
-        <span className="text-white font-bold text-xs">BV</span>
-      </div>
+    <div className={`flex items-center ${className}`}>
       <div className="flex flex-col">
-        <span className="text-[#0070f3] font-bold text-sm leading-none">Bharat</span>
-        <span className="text-[#4c8bf5] font-bold text-sm leading-none">Volt</span>
-        <span className="text-[var(--muted-foreground)] text-xs font-medium">Electronics</span>
+        <div className="font-sans font-bold text-sm leading-tight tracking-tight">
+          <span className="bg-gradient-to-r from-[#0070f3] to-[#4c8bf5] bg-clip-text text-transparent">
+            Bharat
+          </span>
+          <span className="bg-gradient-to-r from-[#4c8bf5] to-[#0070f3] bg-clip-text text-transparent ml-1">
+            Volt
+          </span>
+        </div>
+        <div className="text-xs text-[var(--muted-foreground)] font-medium tracking-wide mt-0.5">
+          Electronics
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Horizontal version for navigation
+export function HorizontalLogo({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex items-center ${className}`}>
+      <div className="font-sans font-bold text-2xl leading-tight tracking-tight">
+        <span className="bg-gradient-to-r from-[#0070f3] to-[#4c8bf5] bg-clip-text text-transparent">
+          Bharat
+        </span>
+        <span className="bg-gradient-to-r from-[#4c8bf5] to-[#0070f3] bg-clip-text text-transparent ml-2">
+          Volt
+        </span>
+        <span className="text-[var(--muted-foreground)] font-medium ml-3 text-sm tracking-wide">
+          Electronics
+        </span>
       </div>
     </div>
   )

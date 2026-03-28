@@ -6,9 +6,9 @@ import { ShoppingCart, Search, User, Menu, X, Phone, ChevronDown, Heart, Shield 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
+import { HorizontalLogo } from './logo'
 import CartButton from '@/components/cart/cart-button'
 import { ThemeSwitcher } from '@/components/theme/theme-switcher'
-import Logo from '@/components/layout/logo'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -56,7 +56,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="group">
-              <Logo size="md" className="transition-transform duration-300 group-hover:scale-105" />
+              <HorizontalLogo className="transition-transform duration-300 group-hover:scale-105" />
             </Link>
 
             {/* Desktop Navigation */}
