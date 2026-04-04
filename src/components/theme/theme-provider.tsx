@@ -15,8 +15,8 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('system')
-  const [palette, setPaletteState] = useState<string>('nextjs-dark')
+  const [theme, setThemeState] = useState<Theme>('dark')
+  const [palette, setPaletteState] = useState<string>('dark-theme')
   const [mounted, setMounted] = useState(false)
 
   // Initialize theme from localStorage or system preference
@@ -26,14 +26,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const savedTheme = localStorage.getItem('theme') as Theme
       const savedPalette = localStorage.getItem('palette')
       
-      if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+      if (savedTheme && ['light', 'dark', 'auto'].includes(savedTheme)) {
         setThemeState(savedTheme)
       }
       
       if (savedPalette && colorPalettes[savedPalette]) {
         setPaletteState(savedPalette)
       } else {
-        const autoPalette = getPaletteForTheme(savedTheme || 'system')
+        const autoPalette = getPaletteForTheme(savedTheme || 'dark')
         setPaletteState(autoPalette)
       }
     }
@@ -64,6 +64,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       // Add theme class to body
       document.body.className = document.body.className.replace(/theme-\w+/g, '')
       document.body.classList.add(`theme-${palette}`)
+      
+      // Set data-theme attribute for CSS targeting
+      document.documentElement.setAttribute('data-theme', theme === 'auto' ? 'auto' : theme)
     }
     
     // Remove transition class after animation completes
@@ -72,15 +75,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }, 400)
     
     return () => clearTimeout(timeout)
-  }, [palette, mounted])
+  }, [palette, mounted, theme])
 
   // Listen for system theme changes
   useEffect(() => {
-    if (theme !== 'system' || typeof window === 'undefined') return
+    if (theme !== 'auto' || typeof window === 'undefined') return
     
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = () => {
-      const autoPalette = getPaletteForTheme('system')
+      const autoPalette = getPaletteForTheme('auto')
       setPaletteState(autoPalette)
     }
     
@@ -95,7 +98,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
     
     // Auto-switch palette for system/light/dark themes
-    if (newTheme === 'system' || newTheme === 'light' || newTheme === 'dark') {
+    if (newTheme === 'auto' || newTheme === 'light' || newTheme === 'dark') {
       const autoPalette = getPaletteForTheme(newTheme)
       setPaletteState(autoPalette)
       if (typeof window !== 'undefined') {
@@ -113,7 +116,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  const currentPalette = colorPalettes[palette] || colorPalettes['macos-dark']
+  const currentPalette = colorPalettes[palette] || colorPalettes['dark-theme']
 
   return (
     <ThemeContext.Provider

@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+    <html lang="en" className={`${poppins.variable} ${montserrat.variable} antialiased`}>
       <body className="min-h-screen flex flex-col">
         <ThemeProvider>
           <Header />

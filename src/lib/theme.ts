@@ -1,4 +1,4 @@
-export type Theme = 'light' | 'dark' | 'system'
+export type Theme = 'light' | 'dark' | 'auto'
 
 export interface ColorPalette {
   name: string
@@ -94,85 +94,85 @@ export interface ColorPalette {
   }
 }
 
-// Vercel Inspired Sleek Themes with macOS Glassmorphism
+// Strict Color Theme - Only Dark Blue, Yellow, and White
 export const colorPalettes: Record<string, ColorPalette> = {
-  'vercel-dark': {
-    name: 'vercel-dark',
-    displayName: 'Vercel Dark',
+  'dark-theme': {
+    name: 'dark-theme',
+    displayName: 'Dark Theme',
     colors: {
-      primary: '#000000',
-      'primary-foreground': '#ffffff',
-      secondary: '#171717',
-      'secondary-foreground': '#fafafa',
-      accent: '#0070f3',
-      'accent-foreground': '#ffffff',
-      muted: '#262626',
-      'muted-foreground': '#a3a3a3',
       background: '#000000',
-      foreground: '#fafafa',
-      border: '#262626',
-      input: '#171717',
-      ring: '#0070f3',
-      destructive: '#dc2626',
-      'destructive-foreground': '#ffffff',
+      foreground: '#FFFFFF',
+      primary: '#FFFFFF',
+      'primary-foreground': '#000000',
+      secondary: '#FFC107',
+      'secondary-foreground': '#000000',
+      muted: '#1A1A1A',
+      'muted-foreground': '#A0A0A0',
+      accent: '#FFC107',
+      'accent-foreground': '#000000',
+      destructive: '#DC2626',
+      'destructive-foreground': '#FFFFFF',
+      border: '#2A2A2A',
+      input: '#1A1A1A',
+      ring: '#FFC107',
       success: '#22c55e',
-      warning: '#f59e0b',
+      warning: '#FFC107',
       info: '#3b82f6',
-      card: '#171717',
-      'card-foreground': '#fafafa',
-      popover: '#171717',
-      'popover-foreground': '#fafafa',
-      footer: '#0a0a0a',
-      'footer-foreground': '#a3a3a3',
+      card: '#0A0A0A',
+      'card-foreground': '#FFFFFF',
+      popover: '#0A0A0A',
+      'popover-foreground': '#FFFFFF',
+      footer: '#000000',
+      'footer-foreground': '#A0A0A0',
       header: '#000000',
-      'header-foreground': '#fafafa',
-      sidebar: '#171717',
-      'sidebar-foreground': '#fafafa',
-      active: '#0070f3',
-      hover: '#262626',
-      focus: '#0070f3',
-      disabled: '#525252',
-      overlay: 'rgba(0, 0, 0, 0.8)',
-      shadow: 'rgba(0, 0, 0, 0.3)',
-      'text-primary': '#fafafa',
-      'text-secondary': '#a3a3a3',
-      'text-muted': '#737373',
+      'header-foreground': '#FFFFFF',
+      sidebar: '#0A0A0A',
+      'sidebar-foreground': '#FFFFFF',
+      active: '#FFC107',
+      hover: '#1A1A1A',
+      focus: '#FFC107',
+      disabled: '#404040',
+      overlay: 'rgba(0, 0, 0, 0.9)',
+      shadow: 'rgba(0, 0, 0, 0.5)',
+      'text-primary': '#FFFFFF',
+      'text-secondary': '#A0A0A0',
+      'text-muted': '#606060',
       'text-inverse': '#000000',
-      'border-light': '#404040',
-      'border-medium': '#262626',
-      'border-strong': '#171717',
+      'border-light': '#1A1A1A',
+      'border-medium': '#2A2A2A',
+      'border-strong': '#404040',
       'fill-primary': '#000000',
-      'fill-secondary': '#171717',
-      'fill-accent': '#0070f3',
-      'outline': '#0070f3',
-      'outline-variant': '#404040',
-      'surface': '#171717',
-      'surface-variant': '#262626',
-      'surface-container': '#0a0a0a',
-      'surface-container-low': '#171717',
-      'surface-container-high': '#262626',
-      'inverse-surface': '#fafafa',
+      'fill-secondary': '#1A1A1A',
+      'fill-accent': '#FFC107',
+      'outline': '#FFC107',
+      'outline-variant': '#2A2A2A',
+      'surface': '#0A0A0A',
+      'surface-variant': '#1A1A1A',
+      'surface-container': '#000000',
+      'surface-container-low': '#0A0A0A',
+      'surface-container-high': '#1A1A1A',
+      'inverse-surface': '#FFFFFF',
       'inverse-on-surface': '#000000',
-      'inverse-primary': '#0070f3',
-      'scrim': 'rgba(0, 0, 0, 0.8)',
-      'elevation-1': '#262626',
-      'elevation-2': '#404040',
-      'elevation-3': '#525252',
-      'outline-error': '#dc2626',
-      'surface-bright': '#262626',
-      'surface-dim': '#171717',
+      'inverse-primary': '#FFC107',
+      'scrim': 'rgba(0, 0, 0, 0.9)',
+      'elevation-1': '#1A1A1A',
+      'elevation-2': '#2A2A2A',
+      'elevation-3': '#404040',
+      'outline-error': '#DC2626',
+      'surface-bright': '#1A1A1A',
+      'surface-dim': '#000000',
       'surface-container-lowest': '#000000',
-      'surface-container-highest': '#404040',
+      'surface-container-highest': '#2A2A2A',
     },
     gradients: {
-      primary: 'linear-gradient(135deg, #000000 0%, #171717 100%)',
-      secondary: 'linear-gradient(135deg, #171717 0%, #262626 100%)',
-      accent: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      hero: 'linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #171717 100%)',
-      card: 'linear-gradient(135deg, #171717 0%, #262626 100%)',
-      button: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      overlay: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%)',
-      subtle: 'linear-gradient(135deg, #262626 0%, #404040 100%)',
+      primary: 'linear-gradient(135deg, #000000 0%, #1A1A1A 100%)',
+      secondary: 'linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)',
+      accent: 'linear-gradient(135deg, #FFC107 0%, #FFD700 100%)',
+      hero: 'linear-gradient(135deg, #000000 0%, #0A0A0A 50%, #1A1A1A 100%)',
+      card: 'linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%)',
+      button: 'linear-gradient(135deg, #FFC107 0%, #FFD700 100%)',
+      overlay: 'linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%)',
+      subtle: 'linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)',
     },
     shadows: {
       sm: '0 1px 2px rgba(0, 0, 0, 0.5)',
@@ -189,83 +189,83 @@ export const colorPalettes: Record<string, ColorPalette> = {
       elevation: '0 8px 16px rgba(0, 0, 0, 0.6)',
     },
   },
-  'vercel-light': {
-    name: 'vercel-light',
-    displayName: 'Vercel Light',
+  'light-theme': {
+    name: 'light-theme',
+    displayName: 'Light Theme',
     colors: {
-      primary: '#000000',
-      'primary-foreground': '#ffffff',
-      secondary: '#f4f4f5',
-      'secondary-foreground': '#18181b',
-      accent: '#0070f3',
-      'accent-foreground': '#ffffff',
-      muted: '#f4f4f5',
-      'muted-foreground': '#71717a',
-      background: '#ffffff',
-      foreground: '#18181b',
-      border: '#e4e4e7',
-      input: '#f4f4f5',
-      ring: '#0070f3',
-      destructive: '#dc2626',
-      'destructive-foreground': '#ffffff',
+      background: '#FFFFFF',
+      foreground: '#0A1F44',
+      primary: '#0A1F44',
+      'primary-foreground': '#FFFFFF',
+      secondary: '#FFC107',
+      'secondary-foreground': '#0A1F44',
+      muted: '#F5F5F5',
+      'muted-foreground': '#6B7280',
+      accent: '#FFC107',
+      'accent-foreground': '#0A1F44',
+      destructive: '#DC2626',
+      'destructive-foreground': '#FFFFFF',
+      border: '#E5E7EB',
+      input: '#FFFFFF',
+      ring: '#FFC107',
       success: '#22c55e',
       warning: '#f59e0b',
       info: '#3b82f6',
-      card: '#ffffff',
-      'card-foreground': '#18181b',
-      popover: '#ffffff',
-      'popover-foreground': '#18181b',
-      footer: '#fafafa',
-      'footer-foreground': '#71717a',
-      header: '#ffffff',
-      'header-foreground': '#18181b',
-      sidebar: '#f4f4f5',
-      'sidebar-foreground': '#18181b',
-      active: '#0070f3',
-      hover: '#f4f4f5',
-      focus: '#0070f3',
-      disabled: '#d4d4d8',
+      card: '#FFFFFF',
+      'card-foreground': '#0A1F44',
+      popover: '#FFFFFF',
+      'popover-foreground': '#0A1F44',
+      footer: '#0A1F44',
+      'footer-foreground': '#FFFFFF',
+      header: '#FFFFFF',
+      'header-foreground': '#0A1F44',
+      sidebar: '#F5F5F5',
+      'sidebar-foreground': '#0A1F44',
+      active: '#FFC107',
+      hover: '#F5F5F5',
+      focus: '#FFC107',
+      disabled: '#D4D4D8',
       overlay: 'rgba(0, 0, 0, 0.5)',
       shadow: 'rgba(0, 0, 0, 0.1)',
-      'text-primary': '#18181b',
-      'text-secondary': '#71717a',
-      'text-muted': '#a1a1aa',
-      'text-inverse': '#ffffff',
-      'border-light': '#f4f4f5',
-      'border-medium': '#e4e4e7',
-      'border-strong': '#d4d4d8',
-      'fill-primary': '#ffffff',
-      'fill-secondary': '#f4f4f5',
-      'fill-accent': '#0070f3',
-      'outline': '#0070f3',
-      'outline-variant': '#d4d4d8',
-      'surface': '#ffffff',
-      'surface-variant': '#f4f4f5',
-      'surface-container': '#fafafa',
-      'surface-container-low': '#ffffff',
-      'surface-container-high': '#f4f4f5',
-      'inverse-surface': '#18181b',
-      'inverse-on-surface': '#ffffff',
-      'inverse-primary': '#0070f3',
+      'text-primary': '#0A1F44',
+      'text-secondary': '#6B7280',
+      'text-muted': '#9CA3AF',
+      'text-inverse': '#FFFFFF',
+      'border-light': '#F5F5F5',
+      'border-medium': '#E5E7EB',
+      'border-strong': '#D1D5DB',
+      'fill-primary': '#0A1F44',
+      'fill-secondary': '#F5F5F5',
+      'fill-accent': '#FFC107',
+      'outline': '#FFC107',
+      'outline-variant': '#E5E7EB',
+      'surface': '#FFFFFF',
+      'surface-variant': '#F5F5F5',
+      'surface-container': '#F5F5F5',
+      'surface-container-low': '#FFFFFF',
+      'surface-container-high': '#F5F5F5',
+      'inverse-surface': '#0A1F44',
+      'inverse-on-surface': '#FFFFFF',
+      'inverse-primary': '#FFC107',
       'scrim': 'rgba(0, 0, 0, 0.5)',
-      'elevation-1': '#f4f4f5',
-      'elevation-2': '#e4e4e7',
-      'elevation-3': '#d4d4d8',
-      'outline-error': '#dc2626',
-      'surface-bright': '#ffffff',
-      'surface-dim': '#f4f4f5',
-      'surface-container-lowest': '#ffffff',
-      'surface-container-highest': '#e4e4e7',
+      'elevation-1': '#F5F5F5',
+      'elevation-2': '#E5E7EB',
+      'elevation-3': '#D1D5DB',
+      'outline-error': '#DC2626',
+      'surface-bright': '#FFFFFF',
+      'surface-dim': '#F5F5F5',
+      'surface-container-lowest': '#FFFFFF',
+      'surface-container-highest': '#E5E7EB',
     },
     gradients: {
-      primary: 'linear-gradient(135deg, #ffffff 0%, #f4f4f5 100%)',
-      secondary: 'linear-gradient(135deg, #f4f4f5 0%, #e4e4e7 100%)',
-      accent: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      hero: 'linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #f4f4f5 100%)',
-      card: 'linear-gradient(135deg, #ffffff 0%, #f4f4f5 100%)',
-      button: 'linear-gradient(135deg, #0070f3 0%, #4c8bf5 100%)',
-      overlay: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%)',
-      subtle: 'linear-gradient(135deg, #f4f4f5 0%, #e4e4e7 100%)',
+      primary: 'linear-gradient(135deg, #0A1F44 0%, #1A2F54 100%)',
+      secondary: 'linear-gradient(135deg, #FFC107 0%, #FFD700 100%)',
+      accent: 'linear-gradient(135deg, #FFC107 0%, #FFD700 100%)',
+      hero: 'linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 50%, #FFFFFF 100%)',
+      card: 'linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%)',
+      button: 'linear-gradient(135deg, #FFC107 0%, #FFD700 100%)',
+      overlay: 'linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%)',
+      subtle: 'linear-gradient(135deg, #F5F5F5 0%, #E5E7EB 100%)',
     },
     shadows: {
       sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
@@ -284,8 +284,8 @@ export const colorPalettes: Record<string, ColorPalette> = {
   },
 }
 
-export const defaultPalette = 'vercel-dark'
-export const systemPalettes = ['vercel-dark', 'vercel-light'] as const
+export const defaultPalette = 'dark-theme'
+export const systemPalettes = ['dark-theme', 'light-theme'] as const
 
 export function getSystemTheme(): 'light' | 'dark' {
   if (typeof window === 'undefined') return 'dark'
@@ -293,11 +293,11 @@ export function getSystemTheme(): 'light' | 'dark' {
 }
 
 export function getPaletteForTheme(theme: Theme): string {
-  if (theme === 'system') {
+  if (theme === 'auto') {
     const systemTheme = getSystemTheme()
-    return systemTheme === 'dark' ? 'vercel-dark' : 'vercel-light'
+    return systemTheme === 'dark' ? 'dark-theme' : 'light-theme'
   }
-  return theme === 'dark' ? 'vercel-dark' : 'vercel-light'
+  return theme === 'dark' ? 'dark-theme' : 'light-theme'
 }
 
 export function generateCSSVariables(palette: ColorPalette): string {
@@ -309,22 +309,10 @@ export function generateCSSVariables(palette: ColorPalette): string {
     variables.push(`  --${cssVar}: ${value};`)
   })
 
-  // Gradient variables
-  Object.entries(palette.gradients).forEach(([key, value]) => {
-    const cssVar = key.replace(/([A-Z])/g, '-$1').toLowerCase()
-    variables.push(`  --gradient-${cssVar}: ${value};`)
-  })
-
-  // Shadow variables
-  Object.entries(palette.shadows).forEach(([key, value]) => {
-    const cssVar = key.replace(/([A-Z])/g, '-$1').toLowerCase()
-    variables.push(`  --shadow-${cssVar}: ${value};`)
-  })
-
   // Additional variables
+  variables.push(`  --radius: 0.75rem;`)
   variables.push(`  --glass-backdrop: ${palette.colors.background}cc;`)
   variables.push(`  --glass-border: ${palette.colors.border}33;`)
-  variables.push(`  --radius: 0.5rem;`) // Reduced radius for more compact look
 
   return variables.join('\n')
 }

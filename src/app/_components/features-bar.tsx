@@ -43,13 +43,13 @@ export default function FeaturesBar() {
   ]
 
   return (
-    <section className="py-8 bg-[var(--secondary)] border-y border-[var(--border)]">
+    <section className="py-8 bg-[var(--muted)] border-y border-[var(--border)]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {features.map((feature, index) => (
             <div key={index} className="flex items-center space-x-3 text-center sm:text-left">
-              <div className="w-12 h-12 bg-[var(--primary)] rounded-xl flex items-center justify-center flex-shrink-0">
-                <feature.icon className="h-6 w-6 text-white" />
+              <div className="w-12 h-12 bg-[var(--accent)] rounded-xl flex items-center justify-center flex-shrink-0">
+                <feature.icon className="h-6 w-6 text-[var(--accent-foreground)]" />
               </div>
               <div className="min-w-0">
                 <h3 className="font-semibold text-[var(--foreground)] text-sm">{feature.title}</h3>

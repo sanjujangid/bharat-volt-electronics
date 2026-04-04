@@ -5,21 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
+        default: 
+          "bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 shadow-sm",
         destructive:
-          "bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800",
+          "bg-red-600 text-white hover:bg-red-700",
         outline:
-          "border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 shadow-sm hover:shadow-md",
+          "border border-[var(--border)] bg-transparent hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         secondary:
-          "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-900 hover:from-gray-200 hover:to-gray-300",
-        ghost: "hover:bg-gray-100 hover:text-gray-900",
-        link: "text-blue-600 underline-offset-4 hover:underline",
-        luxury: "bg-gradient-to-r from-amber-600 to-amber-700 text-white hover:from-amber-700 hover:to-amber-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
-        premium: "bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
+          "bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90",
+        ghost: "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
+        link: "text-[var(--accent)] underline-offset-4 hover:underline",
+        accent: "bg-[var(--accent)] text-[var(--accent-foreground)] hover:opacity-90 shadow-sm",
       },
       size: {
         default: "h-10 px-4 py-2",

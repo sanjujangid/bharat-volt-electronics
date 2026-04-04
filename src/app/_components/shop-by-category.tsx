@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { ArrowRight, Wind, Droplets, Sun, Zap, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 interface Category {
   name: string
-  icon: any
+  icon: React.ElementType
   slug: string
   description: string
   products: string
@@ -20,7 +20,7 @@ export default function ShopByCategory() {
       name: 'Kitchen Chimneys', 
       icon: Wind, 
       slug: 'chimneys', 
-      description: 'Auto-clean technology with powerful suction',
+      description: 'Auto-clean technology',
       products: '50+ Products',
       featured: true
     },
@@ -28,7 +28,7 @@ export default function ShopByCategory() {
       name: 'Water Purifiers', 
       icon: Droplets, 
       slug: 'ro', 
-      description: 'RO+UV+UF+Alkaline purification system',
+      description: 'RO+UV+UF+Alkaline',
       products: '30+ Products',
       featured: true
     },
@@ -36,7 +36,7 @@ export default function ShopByCategory() {
       name: 'Solar Equipment', 
       icon: Sun, 
       slug: 'solar', 
-      description: 'Government subsidy available',
+      description: 'Govt. subsidy available',
       products: '25+ Products',
       featured: false
     },
@@ -44,70 +44,74 @@ export default function ShopByCategory() {
       name: 'Smart Gadgets', 
       icon: Zap, 
       slug: 'gadgets', 
-      description: 'AI-powered home automation',
+      description: 'AI-powered automation',
       products: '40+ Products',
       featured: false
     },
     { 
-      name: 'Lighting Solutions', 
+      name: 'LED Lighting', 
       icon: Sparkles, 
       slug: 'lighting', 
-      description: 'Energy-efficient LED lighting',
+      description: 'Energy-efficient',
       products: '35+ Products',
       featured: false
     },
   ]
 
   return (
-    <section className="py-20 bg-[var(--background)]">
+    <section className="py-16 bg-[var(--background)]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-[var(--foreground)]">
-            Shop by Category
-          </h2>
-          <p className="text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto">
-            Explore our curated collection of premium electronics and home appliances, 
-            designed with cutting-edge technology and elegant aesthetics
-          </p>
+        {/* Section Header - Featured Products Style */}
+        <div className="mb-10">
+          <div className="flex items-start gap-4">
+            {/* Accent Bar */}
+            <div className="w-1 h-12 bg-[var(--accent)] rounded-full mt-1" />
+            <div className="flex-1">
+              <span className="text-sm font-semibold text-[var(--accent)] tracking-wider uppercase block mb-2">
+                Browse Collection
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[var(--foreground)] mb-4">
+                Shop by Category
+              </h2>
+              <p className="text-base text-[var(--muted-foreground)] max-w-xl leading-relaxed">
+                Explore our curated collection of premium electronics and home appliances, designed with cutting-edge technology and elegant aesthetics
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {/* Categories Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {categories.map((category, index) => (
             <Link key={category.slug} href={`/categories/${category.slug}`}>
-              <Card className="group bg-[var(--secondary)] border-[var(--border)] overflow-hidden hover:bg-[var(--muted)] transition-all duration-300 hover-lift">
-                <CardContent className="p-8 text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto rounded-2xl bg-[var(--primary)] flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                      <category.icon className="h-10 w-10 text-white" />
-                    </div>
-                    {category.featured && (
-                      <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                        Popular
-                      </div>
-                    )}
+              <div className={cn(
+                "group relative p-5 rounded-xl border transition-all duration-300",
+                "bg-[var(--card)] border-[var(--border)] hover:border-[var(--accent)]/50",
+                "hover:shadow-sm"
+              )}>
+                {/* Icon */}
+                <div className="mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--muted)] flex items-center justify-center group-hover:bg-[var(--accent)]/10 transition-colors">
+                    <category.icon className="h-5 w-5 text-[var(--accent)]" strokeWidth={1.5} />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2 text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
-                    {category.name}
-                  </h3>
-                  <p className="text-sm text-[var(--muted-foreground)] mb-3">
-                    {category.description}
-                  </p>
-                  <p className="text-xs text-[var(--muted-foreground)] font-medium">
-                    {category.products}
-                  </p>
-                </CardContent>
-              </Card>
+                </div>
+                
+                {/* Content */}
+                <h3 className="font-semibold text-base text-[var(--foreground)] mb-1.5 group-hover:text-[var(--accent)] transition-colors">
+                  {category.name}
+                </h3>
+                <p className="text-sm text-[var(--muted-foreground)] mb-2 leading-relaxed">
+                  {category.description}
+                </p>
+                <p className="text-xs text-[var(--accent)] font-medium">
+                  {category.products}
+                </p>
+
+                {/* Subtle arrow on hover */}
+                <ArrowRight className="absolute bottom-5 right-5 h-4 w-4 text-[var(--muted-foreground)] opacity-0 group-hover:opacity-100 group-hover:text-[var(--accent)] transition-all duration-300 transform translate-x-1 group-hover:translate-x-0" />
+              </div>
             </Link>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <Link href="/categories">
-            <Button variant="outline" className="h-12 px-8 rounded-xl border-2 border-[var(--border)] text-[var(--primary)] hover:bg-[var(--secondary)] hover:text-white">
-              View All Categories
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

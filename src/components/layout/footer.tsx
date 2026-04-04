@@ -57,7 +57,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <Logo size="lg" />
+              <Logo size="lg" variant="dark" />
             </div>
             <p className="text-[var(--muted-foreground)] mb-6 leading-relaxed">
               Your trusted partner for premium electronics and home appliances. 
